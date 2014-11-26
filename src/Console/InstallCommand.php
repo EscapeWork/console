@@ -63,6 +63,7 @@ class InstallCommand extends \Symfony\Component\Console\Command\Command
 
     protected function cloneRepo($directory, OutputInterface $output)
     {
+        $this->comment('-> Cloning the escapecriativacao/laravel-bootstrap repository...', $output);
         $process = new Process('git clone git@github.com:escapecriativacao/laravel-bootstrap.git ' . $directory);
         $process->run();
 
@@ -70,17 +71,29 @@ class InstallCommand extends \Symfony\Component\Console\Command\Command
         if (! $process->isSuccessful()) {
             $output->writeln('<error>Erro ao clonar o projeto! ' . $process->getErrorOutput() . '</error>');
         }
-
-        $output->writeln('<comment> -> Projeto clonado</comment>');
     }
 
     protected function bootstrap($directory, OutputInterface $output)
     {
-        $this->executeCommand('cd ' . $directory);
-        $this->executeCommand('npm install');
+        chdir($directory);
+
+        $this->comment('-> Installing npm dependencies...', $output);
+        $this->executeCommand('npm install', $output);
+
+        $this->comment('-> Installing composer dependencies...', $output);
+        $this->executeCommand('composer install', $output);
+
+        $this->comment('-> Generating laravel key...', $output);
+        $this->executeCommand('php artisan key:generate', $output);
+
+        $this->comment('-> Removing .git directory...', $output);
+        $this->executeCommand('rm -rf .git', $output);
+
+        $this->comment('-> Initializing a new .git directory...', $output);
+        $this->executeCommand('git init', $output);
     }
 
-    protected function executeCommand($command)
+    protected function executeCommand($command, OutputInterface $output)
     {
         $process = new Process($command);
         $process->run();
@@ -88,5 +101,10 @@ class InstallCommand extends \Symfony\Component\Console\Command\Command
         if (! $process->isSuccessful()) {
             throw new Exception($process->getErrorOutput());
         }
+    }
+
+    protected function comment($comment, OutputInterface $output)
+    {
+        $output->writeln('<comment>' . $comment . '</comment>');
     }
 }
