@@ -1,0 +1,27 @@
+## Escape installer
+
+This installer installs the [Laravel Bootstrap](github.com/escapecriativacao/laravel-bootstrap) provided by [Agência Escape](http://www.escape.ppg.br). We built this based on the [Laravel Installer](https://github.com/laravel/installer).
+
+### Installing
+
+```
+$ composer global require "escape/installer"
+```
+
+After that, just execute the command: 
+
+```
+$ escape install your-project-name
+```
+
+This will:
+
+* Clone the repository;
+* Install npm dependencies;
+* Install composer dependencies;
+* Generate PHP artisan key;
+* Init a new git repository;
+
+### License
+
+See the [LICENSE](https://github.com/escapecriativacao/console/blob/master/LICENSE) file.
