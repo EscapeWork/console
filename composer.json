@@ -1,5 +1,14 @@
 {
     "name": "escape/installer",
+    "description": "Escape application installer.",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Luís Dalmolin",
+            "email": "luis.nh@gmail.com"
+        }
+    ],
 
     "require": {
         "symfony/console": "~2.0",
