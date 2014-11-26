@@ -4,7 +4,8 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-require __DIR__.'/vendor/autoload.php';
+# require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/../../autoload.php';
 
 $app = new Application('Agência Escape Installer', '0.1');
 $app->add(new Escape\Console\InstallCommand);
