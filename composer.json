@@ -25,5 +25,5 @@
         "escape"
     ],
 
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
