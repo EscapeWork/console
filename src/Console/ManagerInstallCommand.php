@@ -30,6 +30,7 @@ class ManagerInstallCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->setInputInterface($input);
         $this->setOutputInterface($output);
 
         try {
