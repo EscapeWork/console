@@ -11,7 +11,7 @@ $ composer global require "escape/installer"
 After that, just execute the command: 
 
 ```
-$ escape install your-project-name
+$ escape app:install your-project-name
 ```
 
 This will:
