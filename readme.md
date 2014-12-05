@@ -11,7 +11,7 @@ $ composer global require "escape/installer"
 After that, just execute the command: 
 
 ```
-$ escape app:install your-project-name
+$ escape app:install your-project-name 
 ```
 
 This will:
@@ -21,6 +21,16 @@ This will:
 * Install composer dependencies;
 * Generate PHP artisan key;
 * Init a new git repository;
+
+##### Options
+
+We also have some options to optimize your time:
+
+* `--mysql-host=your-host`
+* `--mysql-user=your-user`
+* `--mysql-pass=your-pass`
+* `--mysql-database=your-database`
+* `--with-manager` - This will works only if you work at [Agência Escape](http://www.escape.ppg.br)
 
 ### License
 
