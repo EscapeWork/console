@@ -21,10 +21,10 @@ class AppInstallCommand extends BaseCommand
         $this->setName('app:install')
              ->setDescription('Create a new escape/laravel-bootstrap application.')
              ->addArgument('name', InputArgument::REQUIRED)
-             ->addOption('--mysql-host', null, InputOption::VALUE_OPTIONAL, 'MySQL Host', 'mysql.escape.ppg.br')
-             ->addOption('--mysql-user', null, InputOption::VALUE_OPTIONAL, 'MySQL User', 'escape')
-             ->addOption('--mysql-pass', null, InputOption::VALUE_OPTIONAL, 'MySQL Pass', '12345')
-             ->addOption('--mysql-database', null, InputOption::VALUE_OPTIONAL, 'MySQL Host')
+             ->addOption('--mysql-host', null, InputOption::VALUE_OPTIONAL, 'MySQL Host', "getenv('DB_HOST')")
+             ->addOption('--mysql-user', null, InputOption::VALUE_OPTIONAL, 'MySQL User', "getenv('DB_USER')")
+             ->addOption('--mysql-pass', null, InputOption::VALUE_OPTIONAL, 'MySQL Pass', "getenv('DB_PASS')")
+             ->addOption('--mysql-database', null, InputOption::VALUE_OPTIONAL, 'MySQL database', "getenv('DB_NAME')")
              ->addOption('--with-manager', null, InputOption::VALUE_NONE);
     }
 
