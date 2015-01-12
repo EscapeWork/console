@@ -26,10 +26,6 @@ This will:
 
 We also have some options to optimize your time:
 
-* `--mysql-host=your-host`
-* `--mysql-user=your-user`
-* `--mysql-pass=your-pass`
-* `--mysql-database=your-database`
 * `--with-manager` - This will works only if you work at [Agência Escape](http://www.escape.ppg.br)
 
 ### License

@@ -4,10 +4,12 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-// require __DIR__.'/vendor/autoload.php'; # for local testing
-require __DIR__.'/../../autoload.php'; # for production
+define('BASE_DIR', __DIR__);
 
-$app = new Application('Agência Escape Installer', '0.1.6');
+// require BASE_DIR.'/vendor/autoload.php'; # for local testing
+require BASE_DIR.'/../../autoload.php'; # for production
+
+$app = new Application('Agência Escape Installer', '0.1.7');
 $app->add(new Escape\Console\AppInstallCommand);
 $app->add(new Escape\Console\ManagerInstallCommand);
 $app->run();

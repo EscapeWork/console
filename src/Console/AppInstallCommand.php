@@ -21,10 +21,6 @@ class AppInstallCommand extends BaseCommand
         $this->setName('app:install')
              ->setDescription('Create a new escape/laravel-bootstrap application.')
              ->addArgument('name', InputArgument::REQUIRED)
-             ->addOption('--mysql-host', null, InputOption::VALUE_OPTIONAL, 'MySQL Host', "getenv('DB_HOST')")
-             ->addOption('--mysql-user', null, InputOption::VALUE_OPTIONAL, 'MySQL User', "getenv('DB_USER')")
-             ->addOption('--mysql-pass', null, InputOption::VALUE_OPTIONAL, 'MySQL Pass', "getenv('DB_PASS')")
-             ->addOption('--mysql-database', null, InputOption::VALUE_OPTIONAL, 'MySQL database', "getenv('DB_NAME')")
              ->addOption('--with-manager', null, InputOption::VALUE_NONE);
     }
 
@@ -45,8 +41,8 @@ class AppInstallCommand extends BaseCommand
         $this->info('Crafting application...');
 
         $this->cloneRepo($directory);
-        $this->setDatabaseConfigurations($input);
         $this->bootstrap($directory);
+        $this->createReadme();
 
         # manager
         if ($input->getOption('with-manager')) {
@@ -104,21 +100,11 @@ class AppInstallCommand extends BaseCommand
         $this->executeCommand('git init');
     }
 
-    protected function setDatabaseConfigurations(InputInterface $input)
+    protected function createReadme()
     {
-        $host = $input->getOption('mysql-host');
-        $user = $input->getOption('mysql-user');
-        $pass = $input->getOption('mysql-pass');
-        $name = $input->getOption('mysql-database');
-
-        $file     = getcwd() . '/app/config/local/database.php';
-        $contents = file_get_contents($file);
-
-        $contents = str_replace('#host#', $host, $contents);
-        $contents = str_replace('#user#', $user, $contents);
-        $contents = str_replace('#pass#', $pass, $contents);
-        $contents = str_replace('#name#', $name, $contents);
-
-        file_put_contents($file, $contents);
+        $file = fopen('readme.md', 'w');
+        ftruncate($file, 0);
+        fwrite($file, file_get_contents(BASE_DIR.'/src/stubs/readme.stub'));
+        fclose($file);
     }
 }
