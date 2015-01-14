@@ -43,6 +43,7 @@ class AppInstallCommand extends BaseCommand
         $this->cloneRepo($directory);
         $this->bootstrap($directory);
         $this->createReadme();
+        $this->createDotEnv();
 
         # manager
         if ($input->getOption('with-manager')) {
@@ -105,6 +106,14 @@ class AppInstallCommand extends BaseCommand
         $file = fopen('readme.md', 'w');
         ftruncate($file, 0);
         fwrite($file, file_get_contents(BASE_DIR.'/src/stubs/readme.stub'));
+        fclose($file);
+    }
+
+    protected function createDotEnv()
+    {
+        $file = fopen('.env', 'w');
+        ftruncate($file, 0);
+        fwrite($file, file_get_contents(BASE_DIR.'/src/stubs/env.stub'));
         fclose($file);
     }
 }
