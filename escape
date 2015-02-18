@@ -9,7 +9,7 @@ define('BASE_DIR', __DIR__);
 // require BASE_DIR.'/vendor/autoload.php'; # for local testing
 require BASE_DIR.'/../../autoload.php'; # for production
 
-$app = new Application('Agência Escape Installer', '0.2.0');
+$app = new Application('Agência Escape Installer', '0.2.1');
 $app->add(new Escape\Console\AppInstallCommand);
 $app->add(new Escape\Console\ManagerInstallCommand);
 $app->run();
