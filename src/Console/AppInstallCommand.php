@@ -70,7 +70,7 @@ class AppInstallCommand extends BaseCommand
     protected function verifyApplicationDoesntExist($directory)
     {
         if (is_dir($directory)) {
-            $output->error('Application already exists!');
+            $this->error(' -> Application already exists!!!');
             exit(1);
         }
     }

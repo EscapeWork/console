@@ -55,7 +55,7 @@ class ManagerInstallCommand extends BaseCommand
             
             # publicando as configurações do escapework/manager
             $this->comment(' -> Publicando as configurações do escapework/manager...');
-            $this->executeCommand('php artisan config:publish escapework/manager');
+            $this->executeCommand('php artisan vendor:publish');
             $this->info(' -> Configurações publicadas!');
             $this->comment('');
 
@@ -80,7 +80,7 @@ class ManagerInstallCommand extends BaseCommand
         $json = new JsonFile($file);
         $data = $json->read();
 
-        $data['require']['escapework/manager'] = '1.0';
+        $data['require']['escapework/manager'] = '~2.0';
 
         $data['repositories'] = [
             (object) ['type' => 'composer', 'url' => 'http://packages.escape.ppg.br']
@@ -91,11 +91,11 @@ class ManagerInstallCommand extends BaseCommand
 
     protected function editConfigFile()
     {
-        $file     = getcwd() . '/app/config/app.php';
+        $file     = getcwd() . '/config/app.php';
         $contents = file_get_contents($file);
         
         $provider = "        'EscapeWork\Manager\Providers\ManagerServiceProvider',";
-        $replace  = '# Third party service providers (do not remove this line)';
+        $replace  = '# Third Party Service Providers...';
 
         $newContent = substr_replace(
             $contents, PHP_EOL . $provider, strpos($contents, $replace) + strlen($replace), 0
