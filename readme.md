@@ -5,7 +5,7 @@ This installer installs the [Laravel Bootstrap](github.com/escapecriativacao/lar
 ### Installing
 
 ```
-$ composer global require "escape/installer"
+$ composer global require escape/installer:dev-master
 ```
 
 After that, just execute the command: 
