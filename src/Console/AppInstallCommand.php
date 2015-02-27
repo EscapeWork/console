@@ -105,7 +105,7 @@ class AppInstallCommand extends BaseCommand
     {
         $file = fopen('readme.md', 'w');
         ftruncate($file, 0);
-        fwrite($file, file_get_contents('https://gist.githubusercontent.com/luisdalmolin/b90f23bb0fc068c6e805/raw/bac945128518b783b0c552b05ecd0ea92fde6ed7/readme.md'));
+        fwrite($file, file_get_contents('https://gist.githubusercontent.com/luisdalmolin/b90f23bb0fc068c6e805/raw/readme.md'));
         fclose($file);
     }
 
@@ -113,7 +113,7 @@ class AppInstallCommand extends BaseCommand
     {
         $file = fopen('.env', 'w');
         ftruncate($file, 0);
-        fwrite($file, file_get_contents('https://gist.githubusercontent.com/luisdalmolin/b90f23bb0fc068c6e805/raw/71d0f23e6f5f625397b1274bcdaf223e1ea15ded/.env'));
+        fwrite($file, file_get_contents('https://gist.githubusercontent.com/luisdalmolin/b90f23bb0fc068c6e805/raw/.env'));
         fclose($file);
     }
 }
