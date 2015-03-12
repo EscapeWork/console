@@ -19,7 +19,7 @@ class AppInstallCommand extends BaseCommand
     protected function configure()
     {
         $this->setName('app:install')
-             ->setDescription('Create a new escape/laravel-bootstrap application.')
+             ->setDescription('Create a new escapework/laravel-boilerplate application.')
              ->addArgument('name', InputArgument::REQUIRED)
              ->addOption('--with-manager', null, InputOption::VALUE_NONE);
     }
@@ -78,7 +78,7 @@ class AppInstallCommand extends BaseCommand
     protected function cloneRepo($directory)
     {
         $this->comment(' -> Cloning the escapecriativacao/laravel-bootstrap repository...');
-        $this->executeCommand('git clone git@github.com:escapecriativacao/laravel-bootstrap.git ' . $directory);
+        $this->executeCommand('git clone git@github.com:EscapeWork/LaravelBoilerplate.git' . $directory);
 
         chdir($directory);
     }
