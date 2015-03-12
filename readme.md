@@ -1,11 +1,11 @@
 ## Escape installer
 
-This installer installs the [Laravel Bootstrap](github.com/escapecriativacao/laravel-bootstrap) provided by [Agência Escape](http://www.escape.ppg.br). We built this based on the [Laravel Installer](https://github.com/laravel/installer).
+This installer installs the [Laravel Boilerplate](github.com/EscapeWork/LaravelBoilarplate) provided by [Agência Escape](http://www.escape.ppg.br). We built this based on the [Laravel Installer](https://github.com/laravel/installer).
 
 ### Installing
 
 ```
-$ composer global require escape/installer:dev-master
+$ composer global require escapework/console:dev-master
 ```
 
 After that, just execute the command: 
