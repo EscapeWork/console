@@ -21,7 +21,8 @@ class AppInstallCommand extends BaseCommand
         $this->setName('app:install')
              ->setDescription('Create a new laravel application by the Escape Boilerplate.')
              ->addArgument('name', InputArgument::REQUIRED)
-             ->addOption('--with-manager', null, InputOption::VALUE_NONE);
+             ->addOption('--with-manager', null, InputOption::VALUE_NONE)
+             ->addOption('--sudo', null, InputOption::VALUE_NONE);
     }
 
     /**
@@ -86,7 +87,11 @@ class AppInstallCommand extends BaseCommand
     protected function bootstrap($directory)
     {
         $this->comment(' -> Installing npm dependencies...');
-        $this->executeCommand('npm install');
+        if ($input->getOption('sudo')) {
+            $this->executeCommand('sudo npm install');
+        } else {
+            $this->executeCommand('npm install');
+        }
 
         $this->comment(' -> Installing composer dependencies...');
         $this->executeCommand('composer install');
