@@ -80,7 +80,7 @@ class ManagerInstallCommand extends BaseCommand
         $json = new JsonFile($file);
         $data = $json->read();
 
-        $data['require']['escapework/manager'] = '~2.0';
+        $data['require']['escapework/manager'] = '~2.1';
 
         $data['repositories'] = [
             (object) ['type' => 'composer', 'url' => 'http://packages.escape.ppg.br']
