@@ -87,7 +87,7 @@ class AppInstallCommand extends BaseCommand
     protected function bootstrap($directory)
     {
         $this->comment(' -> Installing npm dependencies...');
-        $this->executeCommand($input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+        $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
 
         $this->comment(' -> Installing bower dependencies...');
         $this->executeCommand('bower install');
