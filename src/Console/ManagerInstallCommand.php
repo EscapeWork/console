@@ -80,7 +80,8 @@ class ManagerInstallCommand extends BaseCommand
         $json = new JsonFile($file);
         $data = $json->read();
 
-        $data['require']['escapework/manager'] = '~2.2';
+        $data['require']['escapework/manager']        = '~2.2';
+        $data['require']['escapework/manager-medias'] = '~2.2';
 
         $data['repositories'] = [
             (object) ['type' => 'composer', 'url' => 'http://packages.escape.ppg.br']
@@ -95,6 +96,7 @@ class ManagerInstallCommand extends BaseCommand
         $contents = file_get_contents($file);
         
         $provider = "        'EscapeWork\Manager\Providers\ManagerServiceProvider',";
+        $provider = "        'EscapeWork\Manager\Medias\Providers\ManagerServiceProvider',";
         $replace  = '# Third Party Service Providers...';
 
         $newContent = substr_replace(
