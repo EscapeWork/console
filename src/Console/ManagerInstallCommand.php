@@ -95,8 +95,8 @@ class ManagerInstallCommand extends BaseCommand
         $file     = getcwd() . '/config/app.php';
         $contents = file_get_contents($file);
         
-        $provider = "        'EscapeWork\Manager\Providers\ManagerServiceProvider',";
-        $provider = "        'EscapeWork\Manager\Medias\Providers\ManagerServiceProvider',";
+        $provider = "        'EscapeWork\Manager\Providers\ManagerServiceProvider',
+                             'EscapeWork\Manager\Medias\Providers\ManagerServiceProvider',";
         $replace  = '# Third Party Service Providers...';
 
         $newContent = substr_replace(
