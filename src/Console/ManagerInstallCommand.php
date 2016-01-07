@@ -57,7 +57,8 @@ class ManagerInstallCommand extends BaseCommand
             
             # publicando as configurações do escapework/manager
             $this->comment(' -> Publicando as configurações do escapework/manager...');
-            $this->executeCommand('php artisan vendor:publish');
+            $this->executeCommand('php artisan vendor:publish --provider="EscapeWork\Manager\Providers\ManagerServiceProvider"');
+            $this->executeCommand('php artisan vendor:publish --provider="EscapeWork\LaraMedias\Providers\MediasServiceProvider"');
             $this->info(' -> Configurações publicadas!');
             $this->comment('');
 
