@@ -98,7 +98,7 @@ class ManagerInstallCommand extends BaseCommand
         $contents = file_get_contents($file);
         
         $provider = "        EscapeWork\Manager\Providers\ManagerServiceProvider::class,
-                             EscapeWork\LaraMedias\Providers\MediasServiceProvider::class,";
+        EscapeWork\LaraMedias\Providers\MediasServiceProvider::class,";
         $replace  = '# Third Party Service Providers...';
 
         $newContent = substr_replace(
