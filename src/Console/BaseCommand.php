@@ -1,4 +1,6 @@
-<?php namespace Escape\Console;
+<?php 
+
+namespace Escape\Console;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

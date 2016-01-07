@@ -1,4 +1,6 @@
-<?php namespace Escape\Console;
+<?php 
+
+namespace Escape\Console;
 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -80,8 +82,8 @@ class ManagerInstallCommand extends BaseCommand
         $json = new JsonFile($file);
         $data = $json->read();
 
-        $data['require']['escapework/manager']        = '~2.2';
-        $data['require']['escapework/manager-medias'] = '~2.2';
+        $data['require']['escapework/manager']    = '2.3.*';
+        $data['require']['escapework/laramedias'] = '0.1.*';
 
         $data['repositories'] = [
             (object) ['type' => 'composer', 'url' => 'http://packages.escape.ppg.br']
@@ -95,8 +97,8 @@ class ManagerInstallCommand extends BaseCommand
         $file     = getcwd() . '/config/app.php';
         $contents = file_get_contents($file);
         
-        $provider = "        'EscapeWork\Manager\Providers\ManagerServiceProvider',
-                             'EscapeWork\Manager\Medias\Providers\ManagerServiceProvider',";
+        $provider = "        EscapeWork\Manager\Providers\ManagerServiceProvider::class,
+                             EscapeWork\LaraMedias\Providers\MediasServiceProvider::class,";
         $replace  = '# Third Party Service Providers...';
 
         $newContent = substr_replace(
