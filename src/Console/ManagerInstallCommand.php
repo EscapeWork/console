@@ -87,7 +87,7 @@ class ManagerInstallCommand extends BaseCommand
         $data['require']['escapework/laramedias'] = '0.1.*';
 
         $data['repositories'] = [
-            (object) ['type' => 'composer', 'url' => 'http://packages.escape.ppg.br']
+            (object) ['type' => 'composer', 'url' => 'https://packages.escape.ppg.br']
         ];
 
         $json->write($data);
