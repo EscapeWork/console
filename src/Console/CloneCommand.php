@@ -82,20 +82,35 @@ class CloneCommand extends BaseCommand
 
     protected function bootstrap()
     {
-        $this->comment(' -> Installing npm dependencies...');
-        $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+        if (is_file('package.json')) {
+            $this->comment(' -> Installing npm dependencies...');
+            $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+        }
 
-        $this->comment(' -> Installing bower dependencies...');
-        $this->executeCommand('bower install');
+        if (is_file('bower.json')) {
+            $this->comment(' -> Installing bower dependencies...');
+            $this->executeCommand('bower install');
+        }
 
-        $this->comment(' -> Installing composer dependencies...');
-        $this->executeCommand('composer install');
+        if (is_file('composer.json')) {
+            $this->comment(' -> Installing composer dependencies...');
+            $this->executeCommand('composer install');
+        }
 
-        $this->comment(' -> Dando permissão de escrita no diretório storage...');
-        $this->executeCommand('chmod -R 777 storage');
+        if (is_dir('storage')) {
+            $this->comment(' -> Dando permissão de escrita no diretório storage...');
+            $this->executeCommand('chmod -R 777 storage');
+        }
 
-        $this->comment(' -> Criando o arquivo .env');
-        $this->executeCommand('cp .env.example .env');
+        if (is_dir('app/storage')) {
+            $this->comment(' -> Dando permissão de escrita no diretório storage...');
+            $this->executeCommand('chmod -R 777 app/storage');
+        }
+
+        if (is_file('.env.example')) {
+            $this->comment(' -> Criando o arquivo .env');
+            $this->executeCommand('cp .env.example .env');
+        }
     }
 
     protected function getTeam()
