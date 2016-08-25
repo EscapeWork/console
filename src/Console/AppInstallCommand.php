@@ -91,9 +91,6 @@ class AppInstallCommand extends BaseCommand
         $this->comment(' -> Installing npm dependencies...');
         $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
 
-        $this->comment(' -> Installing bower dependencies...');
-        $this->executeCommand('bower install');
-
         $this->comment(' -> Installing composer dependencies...');
         $this->executeCommand('composer install');
 
