@@ -44,9 +44,9 @@ class AppInstallCommand extends BaseCommand
         $this->info('Crafting application...');
 
         $this->cloneRepo($directory);
+        $this->createDotEnv();
         $this->bootstrap($directory);
         $this->createReadme();
-        $this->createDotEnv();
 
         # manager
         if ($input->getOption('with-manager')) {
