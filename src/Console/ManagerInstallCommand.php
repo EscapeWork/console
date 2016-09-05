@@ -83,7 +83,7 @@ class ManagerInstallCommand extends BaseCommand
         $json = new JsonFile($file);
         $data = $json->read();
 
-        $data['require']['escapework/manager']    = '2.4.*';
+        $data['require']['escapework/manager']    = '2.5.*';
         $data['require']['escapework/laramedias'] = '0.2.*';
 
         $data['repositories'] = [
