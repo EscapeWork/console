@@ -12,7 +12,6 @@ use Exception;
 
 class CloneCommand extends BaseCommand 
 {
-
     /**
      * Teams
      */
@@ -83,8 +82,8 @@ class CloneCommand extends BaseCommand
     protected function bootstrap()
     {
         if (is_file('package.json')) {
-            $this->comment(' -> Installing npm dependencies...');
-            $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+            $this->comment(' -> Installing npm dependencies (with yarn)...');
+            $this->executeCommand($this->input->getOption('sudo') ? 'sudo yarn' : 'yarn');
         }
 
         if (is_file('bower.json')) {
