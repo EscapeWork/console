@@ -23,6 +23,7 @@ class AppInstallCommand extends BaseCommand
         $this->setName('app:install')
              ->setDescription('Create a new laravel application by the Escape Boilerplate.')
              ->addArgument('name', InputArgument::REQUIRED)
+             ->addOption('--type', null, InputOption::VALUE_OPTIONAL, 'laravel or html', 'laravel')
              ->addOption('--with-manager', null, InputOption::VALUE_NONE)
              ->addOption('--sudo', null, InputOption::VALUE_NONE);
     }
@@ -80,8 +81,13 @@ class AppInstallCommand extends BaseCommand
 
     protected function cloneRepo($directory)
     {
-        $this->comment(' -> Cloning the EscapeWork/LaravelBoilerplate repository...');
-        $this->executeCommand('git clone git@github.com:EscapeWork/LaravelBoilerplate.git ' . $this->input->getArgument('name'));
+        if ($this->input->getOption('type') === 'html') {
+            $this->comment(' -> Cloning the EscapeWork/html-boilerplate repository...');
+            $this->executeCommand('git clone git@github.com:EscapeWork/html-boilerplate.git ' . $this->input->getArgument('name'));
+        } else {
+            $this->comment(' -> Cloning the EscapeWork/LaravelBoilerplate repository...');
+            $this->executeCommand('git clone git@github.com:EscapeWork/LaravelBoilerplate.git ' . $this->input->getArgument('name'));
+        }
 
         chdir($directory);
     }

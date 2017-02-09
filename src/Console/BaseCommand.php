@@ -10,7 +10,6 @@ use Symfony\Component\Console\Question\Question;
 
 abstract class BaseCommand extends Command 
 {
-
     /**
      * Output
      * @var Symfony\Component\Console\Output\InputInterface
