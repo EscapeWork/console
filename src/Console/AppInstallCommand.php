@@ -12,7 +12,6 @@ use Exception;
 
 class AppInstallCommand extends BaseCommand 
 {
-
     /**
      * Configure the command options.
      *
@@ -94,20 +93,33 @@ class AppInstallCommand extends BaseCommand
 
     protected function bootstrap($directory)
     {
-        $this->comment(' -> Installing npm dependencies...');
-        $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+        if (is_file('package.json')) {
+            $this->comment(' -> Installing npm dependencies...');
+            $this->executeCommand($this->input->getOption('sudo') ? 'sudo npm install' : 'npm install');
+        }
 
-        $this->comment(' -> Installing composer dependencies...');
-        $this->executeCommand('composer install');
+        if (is_file('composer.json')) {
+            $this->comment(' -> Installing composer dependencies...');
+            $this->executeCommand('composer install');
+        }
 
-        $this->comment(' -> Generating laravel key...');
-        $this->executeCommand('php artisan key:generate');
+        if (is_file('artisan')) {
+            $this->comment(' -> Generating laravel key...');
+            $this->executeCommand('php artisan key:generate');
+        }
 
-        $this->comment(' -> Removing .git directory...');
-        $this->executeCommand('rm -rf .git');
+        if (is_dir('.git')) {
+            $this->comment(' -> Removing .git directory...');
+            $this->executeCommand('rm -rf .git');
 
-        $this->comment(' -> Initializing a new .git directory...');
-        $this->executeCommand('git init');
+            $this->comment(' -> Initializing a new .git directory...');
+            $this->executeCommand('git init');
+        }
+
+        if (is_dir('storage')) {
+            $this->comment(' -> Dando permissão de escrita no diretório storage...');
+            $this->executeCommand('chmod -R 777 storage');
+        }
     }
 
     protected function createReadme()
