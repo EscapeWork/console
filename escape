@@ -16,4 +16,5 @@ $app = new Application('Agência Escape Installer', '0.2.2');
 $app->add(new Escape\Console\AppInstallCommand);
 $app->add(new Escape\Console\ManagerInstallCommand);
 $app->add(new Escape\Console\CloneCommand);
+$app->add(new Escape\Console\OptimizeImagesCommand);
 $app->run();
